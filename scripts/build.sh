@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+BUILD_NUMBER=$1
+DOCKER_HUB_REPO=vkarkad
+PUBLIC_IMAGE=ubuntu-apache2
+
+BUILD_IMAGE_TAG=build-${BUILD_NUMBER}
+docker build --tag ${DOCKER_HUB_REPO}/${PUBLIC_IMAGE}:${BUILD_IMAGE_TAG} .
+
+CONTAINER_NAME="--name web-build-${BUILD_NUMBER}"
+docker run -d -p 80:80 ${CONTAINER_NAME} ${DOCKER_HUB_REPO}/${PUBLIC_IMAGE}:${BUILD_IMAGE_TAG}
