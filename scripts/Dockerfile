@@ -1,6 +1,6 @@
 FROM  vkarkad/ubuntu-apache2:1.0
 
-COPY . /var/www/html
+COPY .. /var/www/html
 
 # Configure apache
 RUN echo '. /etc/apache2/envvars' > /root/run_apache.sh && \
